@@ -4,7 +4,14 @@
   (:use #:cl #:restas #:alexandria))
 
 (defpackage #:webgigs.db
-  (:use #:cl #:alexandria))
+  (:use #:cl #:alexandria)
+  (:export #:define-schema
+           #:mark-link-as-favourite
+           #:store-parsed-link
+           #:store-gig-links-for-all-categories
+           #:get-all-stored-links))
 
 (defpackage #:webgigs.core
-  (:use #:cl #:alexandria))
+  (:use #:cl #:alexandria)
+  (:export #:get-gig-links-for-all-categories
+           #:get-gig-links-for-category))
