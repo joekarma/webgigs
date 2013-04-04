@@ -1,7 +1,8 @@
 ;;;; package.lisp
 
 (restas:define-module #:webgigs
-  (:use #:cl #:restas #:alexandria))
+  (:use #:cl #:restas #:alexandria)
+  (:export #:start-server))
 
 (defpackage #:webgigs.db
   (:use #:cl #:alexandria)
