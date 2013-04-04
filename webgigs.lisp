@@ -43,8 +43,8 @@
 
 (defun start-server ()
   (restas:start :webgigs :hostname "craigslist.local" :port 8080
-                :context (make-context '((yaclml:*yaclml-indent* nil)
-                                         (setf hunchentoot:*show-lisp-errors-p* t)))))
+                :context (make-context '((yaclml:*yaclml-indent* . nil)
+                                         (setf hunchentoot:*show-lisp-errors-p* . t)))))
 
 (defun page-style ()
   (<:style
