@@ -2,7 +2,7 @@
 
 ;;; Utilities
 
-(defmacro defdbfun2 (name (&rest args) &body fun)
+(defmacro defdbfun (name (&rest args) &body fun)
   `(defun ,name ,args
      (pomo:with-connection '("craigslist" "joekarma" "" "localhost")
        ,@fun)))
@@ -14,7 +14,7 @@
 
 ;;; Code
 
-(defdbfun2 define-schema ()
+(defdbfun define-schema ()
   (restart-case
       (pomo:execute (:create-table gigs
                                    ((id :type bigint :primary-key t)
