@@ -2,15 +2,24 @@
 
 ;;; Utilities
 
-(defmacro defdbfun (name (&rest args) &body fun)
-  `(defun ,name ,args
-     (pomo:with-connection '("craigslist" "joekarma" "" "localhost")
-       ,@fun)))
+(defvar *db-config* (config:get-configuration :webgigs :psql))
 
 (defmacro with-alist-accessors ((&rest accessors) alist &body body)
   (once-only (alist)
     `(let ,(mapcar (lambda (accessor) `(,accessor (assoc-value ,alist ,(intern (symbol-name accessor) :keyword)))) accessors)
        ,@body)))
+
+(with-alist-accessors (username password database hostname)
+    *db-config*
+  (defvar *username* username)
+  (defvar *password* password)
+  (defvar *database* database)
+  (defvar *hostname* hostname))
+
+(defmacro defdbfun (name (&rest args) &body fun)
+  `(defun ,name ,args
+      (pomo:with-connection (list webgigs.db::*database* webgigs.db::*username* webgigs.db::*password* webgigs.db::*hostname*)
+        ,@fun)))
 
 ;;; Code
 

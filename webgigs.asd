@@ -10,5 +10,5 @@
                (:file "db")
                (:file "webgigs"))
   :depends-on (:restas :closure-html :stp-query :drakma :cl-ppcre :cl-interpol :postmodern :css-lite :parenscript :yaclml
-               :alexandria))
+               :alexandria :config))
 
