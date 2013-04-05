@@ -2,7 +2,8 @@
 
 (restas:define-module #:webgigs
   (:use #:cl #:restas #:alexandria)
-  (:export #:start-server))
+  (:export #:start-server
+           #:with-yaclml-output-to-string))
 
 (defpackage #:webgigs.db
   (:use #:cl #:alexandria)

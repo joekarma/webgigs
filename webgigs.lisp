@@ -2,6 +2,8 @@
 
 (in-package #:webgigs)
 
+(defvar *webgigs-hostname* (config:get-configuration :webgigs :hostname))
+
 (restas:define-route index ("/")
   (yaclml:with-yaclml-output-to-string
     (<:html
@@ -42,7 +44,7 @@
   "Added to favourites.")
 
 (defun start-server ()
-  (restas:start :webgigs :hostname "craigslist.local" :port 8080
+  (restas:start :webgigs :hostname *webgigs-hostname* :port 8080
                 :context (make-context '((yaclml:*yaclml-indent* . nil)
                                          (setf hunchentoot:*show-lisp-errors-p* . t)))))
 
